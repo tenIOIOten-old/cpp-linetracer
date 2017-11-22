@@ -1,28 +1,45 @@
 //
+//  目標
+//  スレッドを立てる
+//  起動から走行開始、スレッド立てまで、main
+//  thread
+//  →センサー
+//  →モーター二種
+//  →エンコーダ,オドメトリ
+//
 //  main.cpp ...　位置座標を計算する
 //
 //  2017.10.26 ... Shiratori Tenta
 //
 #include <mbed.h>
-#include <odmetory.h>
-#include <linetrace_pid.h>
+#include <rtos.h>
 
-//　入力インスタンスと時間インスタンス作成
-encoda pulseL(); // ＊書き直しといて
-encoda pulseR(); // ＊書き直しといて
-Switch startSwich(); // ＊書き直しといて
-Ticker ticker;
+DigitalOut powerLed(LED1);
+DigitalOut runningLed(LED1);
 
-DigitalOut myled(LED1);
+int main()
+{
+    Thread threadMotorL();
+    Thread threadMotorR();
+    Thread threadEncoder();
+    Thread threadOdmetory();
 
-int main() {
-    ticker(tickDistance(),DT);
-    while(){
+    RtoTimer timerSensor();
+    timerSensor.start(5);
+
+    powerLed = 1;
+    while (startSwich.read() == 0)
+    {
     }
-    while(1) {
-        myled = 1; // LED is ON
-        wait(0.2); // 200 ms
-        myled = 0; // LED is OFF
-        wait(1.0); // 1 sec
+    runningLed = 1;
+
+    wait(1);
+
+    while (1)
+    {
+        threadMotorL.signal_set(0x01);
+        threadMotorR.signal_set(0x01);
+        threadEncoder.signal_set(0x01);
+        threadOdmetory.signal_set(0x01);
     }
 }
