@@ -3,3 +3,8 @@
 Eigen
 mbed
 .DS_Store
+mbed
+.temp
+mbed.bid
+mbed_settings.py
+mbed-rtos

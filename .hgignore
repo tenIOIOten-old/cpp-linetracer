@@ -1,3 +1,7 @@
 .git
 .gitignore
 .DS_Store
+mbed
+.temp
+mbed.bid
+mbed_settings.py
