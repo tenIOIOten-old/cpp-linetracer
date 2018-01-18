@@ -8,18 +8,13 @@
 #define PPR 400.0f   // 一周するときのカウント値
 
 // For sensor
-#define THRESHOLD 1.0f
+#define THRESHOLD 1.5f
 #define VOLTAGE 3.3f
 
-// For PID
-#define REDUCE_RATIO 0.9f
-#define MOTOR_MAX_VALUE 33
-#define KP 0.46f
-#define KI 0.00005f
-#define KD 0.0f
+// For Odometory
+#define B 96.0f // 車幅
 
 // not use
-#define B 96.0f // 車幅
 #define G 38.2f // ギア比
 
 #endif

@@ -3,5 +3,6 @@
 .DS_Store
 mbed
 .temp
+BUILD
 mbed.bid
 mbed_settings.py

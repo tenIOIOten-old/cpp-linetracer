@@ -19,17 +19,11 @@ public:
   {
     verocity = v;
   }
-  float getVerociry()
+  float getVerocity()
   {
     return verocity.read();
   }
-
-  // 引数分だけ設定最大速度から減らす
-  void reduceVerocity(float motor_cnt_val = 0.0f)
-  {
-    verocity = (MOTOR_MAX_VALUE + motor_cnt_val) / 100.0f;
-  }
-  // true で後ろ　false で前
+  // 左 true で後ろ　false で前,右はつながってない
   void setDirection(bool new_d)
   {
     direction = new_d;
